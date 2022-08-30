@@ -9,10 +9,9 @@ public class TopUpPage {
     private SelenideElement topUp = $("[data-test-id='action-transfer']");
 
 
-
-    public DashboardPage cardReplenishment() {
-        sum.setValue("1000");
-        from.setValue("5559 0000 0000 0001");
+    public DashboardPage cardReplenishment( DataHelper.CardNumber cardNumber, String amount) {
+        sum.setValue(amount);
+        from.setValue(cardNumber.getNumber());
         topUp.click();
         return new DashboardPage();
     }

@@ -10,9 +10,19 @@ public class DataHelper {
         private String password;
     }
 
+    @Value
+    public static class CardNumber {
+        private String number;
+    }
+
+
+
     public static AuthInfo getAuthInfo() {
         return new AuthInfo("vasya", "qwerty123");
 
+    }
+    public static CardNumber getCardNumber() {
+        return new CardNumber("5559 0000 0000 0001");
     }
 
     @Value

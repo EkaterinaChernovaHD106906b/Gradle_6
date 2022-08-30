@@ -24,7 +24,6 @@ public class DashboardPage {
         val text = cards.get(index).text();
         return extractBalance(text);
 
-
     }
 
     public TopUpPage topUpBalanceFirstCard() {
@@ -34,8 +33,6 @@ public class DashboardPage {
 
     public TopUpPage topUpBalanceSecondCard() {
         cards.last().$("button").click();
-
-
         return new TopUpPage();
     }
 
