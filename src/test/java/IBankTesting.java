@@ -26,6 +26,10 @@ public class IBankTesting {
                 .validVerify(verificationCode)
                 .topUpBalanceFirstCard()
                 .cardReplenishment(cardNumber, "1000");
+        DashboardPage page = new DashboardPage();
+        int expected = 11000;
+        int actual = page.getCardBalance(0);
+        Assertions.assertEquals(actual, expected);
     }
 
     @Test
@@ -41,7 +45,7 @@ public class IBankTesting {
                 .topUpBalanceSecondCard()
                 .cardReplenishment(cardNumber, "2000");
         DashboardPage page = new DashboardPage();
-        int expected = 30000;
+        int expected = 12000;
         int actual = page.getCardBalance(1);
         Assertions.assertEquals(actual, expected);
 
