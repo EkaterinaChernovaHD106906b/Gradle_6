@@ -1,4 +1,5 @@
 package ru.netology.test;
+
 import com.codeborne.selenide.Configuration;
 import io.restassured.internal.common.assertion.Assertion;
 import org.junit.jupiter.api.Assertions;
@@ -57,8 +58,7 @@ public class IBankTesting {
     }
 
 
-
-    }
+}
 
 
 

@@ -1,4 +1,5 @@
 package ru.netology.page;
+
 import com.codeborne.selenide.SelenideElement;
 import ru.netology.data.DataHelper;
 
@@ -12,7 +13,7 @@ public class TopUpPage {
     private SelenideElement topUp = $("[data-test-id='action-transfer']");
 
 
-    public DashboardPage cardReplenishment( DataHelper.CardNumber cardNumber, String amount) {
+    public DashboardPage cardReplenishment(DataHelper.CardNumber cardNumber, String amount) {
         sum.setValue(amount);
         from.setValue(cardNumber.getNumber());
         topUp.click();

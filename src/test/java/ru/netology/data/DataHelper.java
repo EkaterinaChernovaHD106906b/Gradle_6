@@ -1,4 +1,5 @@
 package ru.netology.data;
+
 import lombok.Value;
 
 
@@ -18,11 +19,11 @@ public class DataHelper {
     }
 
 
-
     public static AuthInfo getAuthInfo() {
         return new AuthInfo("vasya", "qwerty123");
 
     }
+
     public static CardNumber getCardNumber() {
         return new CardNumber("5559 0000 0000 0001");
     }
