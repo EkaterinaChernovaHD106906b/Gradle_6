@@ -1,8 +1,11 @@
+package ru.netology.page;
 import com.codeborne.selenide.SelenideElement;
+import ru.netology.data.DataHelper;
 
 import static com.codeborne.selenide.Selenide.$;
 
 public class TopUpPage {
+
     private SelenideElement sum = $("[data-test-id='amount'] input");
     private SelenideElement from = $("[data-test-id='from'] input");
 

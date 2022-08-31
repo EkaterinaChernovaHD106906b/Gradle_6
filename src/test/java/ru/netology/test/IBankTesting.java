@@ -1,11 +1,15 @@
+package ru.netology.test;
 import com.codeborne.selenide.Configuration;
 import io.restassured.internal.common.assertion.Assertion;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import ru.netology.page.DashboardPage;
+import ru.netology.page.LoginPage;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static ru.netology.data.DataHelper.*;
 
 public class IBankTesting {
     @BeforeEach
@@ -18,9 +22,9 @@ public class IBankTesting {
     void replenishmentOfTheFirstCard() {
         Configuration.holdBrowserOpen = true;
         open("http://localhost:9999");
-        var authInfo = DataHelper.getAuthInfo();
-        var verificationCode = DataHelper.getVerificationCodeFor(authInfo);
-        var cardNumber = DataHelper.getCardNumber();
+        var authInfo = getAuthInfo();
+        var verificationCode = getVerificationCodeFor(authInfo);
+        var cardNumber = getCardNumber();
         new LoginPage()
                 .validLogin(authInfo)
                 .validVerify(verificationCode)
@@ -36,9 +40,9 @@ public class IBankTesting {
     void replenishmentOfTheSecondCard() {
         Configuration.holdBrowserOpen = true;
         open("http://localhost:9999");
-        var authInfo = DataHelper.getAuthInfo();
-        var verificationCode = DataHelper.getVerificationCodeFor(authInfo);
-        var cardNumber = DataHelper.getCardNumber();
+        var authInfo = getAuthInfo();
+        var verificationCode = getVerificationCodeFor(authInfo);
+        var cardNumber = getCardNumber();
         new LoginPage()
                 .validLogin(authInfo)
                 .validVerify(verificationCode)
@@ -53,5 +57,9 @@ public class IBankTesting {
     }
 
 
-}
+
+    }
+
+
+
 
