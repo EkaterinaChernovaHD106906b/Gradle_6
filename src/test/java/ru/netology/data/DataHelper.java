@@ -14,8 +14,15 @@ public class DataHelper {
     }
 
     @Value
-    public static class CardNumber {
-        private String number;
+    public static class CardNumberFirst {
+        private String numberFirstCard;
+
+    }
+
+    @Value
+    public static class CardNumberSecond {
+        private String numberSecondCard;
+
     }
 
 
@@ -24,9 +31,14 @@ public class DataHelper {
 
     }
 
-    public static CardNumber getCardNumber() {
-        return new CardNumber("5559 0000 0000 0001");
+    public static CardNumberFirst getCardNumberFirst() {
+        return new CardNumberFirst("5559 0000 0000 0001");
     }
+
+    public static CardNumberSecond getCardNumberSecond() {
+        return new CardNumberSecond("5559 0000 0000 0002");
+    }
+
 
     @Value
     public static class VerificationCode {

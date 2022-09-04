@@ -13,9 +13,16 @@ public class TopUpPage {
     private SelenideElement topUp = $("[data-test-id='action-transfer']");
 
 
-    public DashboardPage cardReplenishment(DataHelper.CardNumber cardNumber, String amount) {
+    public DashboardPage cardReplenishmentFirst(DataHelper.CardNumberSecond cardNumberSecond, String amount) {
         sum.setValue(amount);
-        from.setValue(cardNumber.getNumber());
+        from.setValue(cardNumberSecond.getNumberSecondCard());
+        topUp.click();
+        return new DashboardPage();
+    }
+
+    public DashboardPage cardReplenishmentSecond(DataHelper.CardNumberFirst cardNumberFirst, String amount) {
+        sum.setValue(amount);
+        from.setValue(cardNumberFirst.getNumberFirstCard());
         topUp.click();
         return new DashboardPage();
     }

@@ -11,6 +11,7 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class DashboardPage {
     private SelenideElement heading = $("[data-test-id=dashboard]");
+    private SelenideElement reloadButton = $("[data-test-id='action-reload']");
 
 
     public DashboardPage() {
@@ -31,6 +32,7 @@ public class DashboardPage {
     public TopUpPage topUpBalanceFirstCard() {
         cards.first().$("button").click();
         return new TopUpPage();
+
     }
 
     public TopUpPage topUpBalanceSecondCard() {
@@ -38,6 +40,10 @@ public class DashboardPage {
         return new TopUpPage();
     }
 
+    public TopUpPage upDate() {
+        reloadButton.click();
+        return new TopUpPage();
+    }
 
     private int extractBalance(String text) {
         val start = text.indexOf(balanceStart);

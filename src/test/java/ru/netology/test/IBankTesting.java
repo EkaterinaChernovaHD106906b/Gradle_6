@@ -25,38 +25,95 @@ public class IBankTesting {
         open("http://localhost:9999");
         var authInfo = getAuthInfo();
         var verificationCode = getVerificationCodeFor(authInfo);
-        var cardNumber = getCardNumber();
+        var cardNumber = getCardNumberSecond();
         new LoginPage()
                 .validLogin(authInfo)
-                .validVerify(verificationCode)
-                .topUpBalanceFirstCard()
-                .cardReplenishment(cardNumber, "1000");
+                .validVerify(verificationCode);
         DashboardPage page = new DashboardPage();
-        int expected = 11000;
+
+        int currentBalanceFirstCard = page.getCardBalance(0);
+        int currentBalanceSecondCard = page.getCardBalance(1);
+        new DashboardPage()
+                .topUpBalanceFirstCard()
+                .cardReplenishmentFirst(cardNumber, "1000");
+
+        int amount = 1000;
+        int expected = currentBalanceFirstCard + amount;
         int actual = page.getCardBalance(0);
-        Assertions.assertEquals(actual, expected);
+        Assertions.assertEquals(expected, actual);
+        int expected2 = currentBalanceSecondCard - amount;
+        int actual2 = page.getCardBalance(1);
+        Assertions.assertEquals(expected2, actual2);
     }
+
 
     @Test
     void replenishmentOfTheSecondCard() {
+
+
         Configuration.holdBrowserOpen = true;
         open("http://localhost:9999");
+
         var authInfo = getAuthInfo();
         var verificationCode = getVerificationCodeFor(authInfo);
-        var cardNumber = getCardNumber();
+        var cardNumber = getCardNumberFirst();
+
+
         new LoginPage()
                 .validLogin(authInfo)
-                .validVerify(verificationCode)
-                .topUpBalanceSecondCard()
-                .cardReplenishment(cardNumber, "2000");
+                .validVerify(verificationCode);
         DashboardPage page = new DashboardPage();
-        int expected = 12000;
-        int actual = page.getCardBalance(1);
-        Assertions.assertEquals(actual, expected);
 
-
+        int currentBalanceFirstCard = page.getCardBalance(0);
+        int currentBalanceSecondCard = page.getCardBalance(1);
+        new DashboardPage()
+                .topUpBalanceSecondCard()
+                .cardReplenishmentSecond(cardNumber, "2000")
+                .upDate();
+        int amount = 2000;
+        int expected = currentBalanceFirstCard - amount;
+        int actual = page.getCardBalance(0);
+        Assertions.assertEquals(expected, actual);
+        int expected2 = currentBalanceSecondCard + amount;
+        int actual2 = page.getCardBalance(1);
+        Assertions.assertEquals(expected2, actual2);
     }
 
+
+
+
+    /*@Test
+    void myTest() {
+
+
+        Configuration.holdBrowserOpen = true;
+        open("http://localhost:9999");
+
+        var authInfo = getAuthInfo();
+        var verificationCode = getVerificationCodeFor(authInfo);
+        var cardNumber = getCardNumberSecond();
+
+
+        new LoginPage()
+                .validLogin(authInfo)
+                .validVerify(verificationCode);
+        DashboardPage page = new DashboardPage();
+
+        int currentBalanceFirstCard = page.getCardBalance(0);
+        int currentBalanceSecondCard = page.getCardBalance(1);
+        new DashboardPage()
+                .topUpBalanceFirstCard()
+                .cardReplenishment(cardNumber, "2000")
+                .upDate();
+        int amount = 2000;
+        int expected = currentBalanceFirstCard + amount;
+        int actual = page.getCardBalance(0);
+        Assertions.assertEquals(expected, actual);
+        int expected2 = currentBalanceSecondCard - amount;
+        int actual2 = page.getCardBalance(1);
+        Assertions.assertEquals(expected2, actual2);
+    }
+*/
 
 }
 
