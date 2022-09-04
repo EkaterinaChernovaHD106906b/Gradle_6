@@ -80,10 +80,8 @@ public class IBankTesting {
     }
 
 
-
-
-    /*@Test
-    void myTest() {
+    @Test
+    void replenishmentOverLimit() {
 
 
         Configuration.holdBrowserOpen = true;
@@ -103,17 +101,17 @@ public class IBankTesting {
         int currentBalanceSecondCard = page.getCardBalance(1);
         new DashboardPage()
                 .topUpBalanceFirstCard()
-                .cardReplenishment(cardNumber, "2000")
+                .cardReplenishmentFirst(cardNumber, "100000")
                 .upDate();
-        int amount = 2000;
-        int expected = currentBalanceFirstCard + amount;
+        int amount = 100000;
+        int expected = currentBalanceFirstCard;
         int actual = page.getCardBalance(0);
         Assertions.assertEquals(expected, actual);
-        int expected2 = currentBalanceSecondCard - amount;
+        int expected2 = currentBalanceSecondCard;
         int actual2 = page.getCardBalance(1);
         Assertions.assertEquals(expected2, actual2);
     }
-*/
+
 
 }
 
